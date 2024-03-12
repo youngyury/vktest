@@ -4,6 +4,7 @@ from catboost import CatBoostRanker, Pool
 
 
 def fit_model(train: pd.DataFrame, test: pd.DataFrame):
+    train = train.drop_duplicates()
     train_pool = Pool(
         data=train.drop(columns=['target']),
         label=train['target'],
